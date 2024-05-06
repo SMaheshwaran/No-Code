@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+<style>
+  /* Glass theme styles */
+  .glass {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+  }
+
+  /* Custom styling */
+  .jumbotron {
+    background-image: url('https://i.pinimg.com/originals/0e/b1/56/0eb15636563ecc2920056a5dd6e496c5.gif');
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .form-container {
+    max-width: 400px;
+    padding: 20px;
+  }
+
+  .form-input {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+  }
+
+  .form-input:hover {
+    background-color: rgba(255, 255, 255, 1);
+  }
+
+  .form-input:focus {
+    outline: none;
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .form-submit {
+    background-color: #3182CE;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .form-submit:hover {
+    background-color: #2C5282;
+  }
+</style>
+
+<!-- Jumbotron -->
+<div class="jumbotron">
+  <div class="glass form-container">
+    <form action="/autogenerate_edit" method="post">
+      {% csrf_token %}
+      <input rows="60" name="query" id="query" class="form-input" placeholder="Enter the query">
+      <input name="ProjectName" id="ProjectName" class="form-input" placeholder="Enter the ProjectName">
+      <input class="form-submit" type="submit" value="Generate and edit">
+    </form>
+  </div>
+</div>
+<!-- Jumbotron -->
+{% endblock %}
